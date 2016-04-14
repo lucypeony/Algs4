@@ -1,5 +1,5 @@
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
-
+import edu.princeton.cs.algs4.StdOut;
 
 public class Percolation
 {
@@ -32,36 +32,37 @@ public class Percolation
         states[cell]=1;
         
         //if not top row
-        if(i!=1 && isOpen(i-1,j)){
+        if(i!=0 && isOpen(i-1,j)){
             union(getCellIndex(i-1,j),cell);
-        }else if (i==1){
+        }else if (i==0){
             //connect to virtual top cell 
             union(cell,side*side);
         }
         
         //if not bottom row 
-        if(i!=side && isOpen(i+1,j)){
+        if(i!=(side-1)&& isOpen(i+1,j)){
             union(getCellIndex(i+1,j),cell);
-        }else if (i==side){
+        }else if (i==(side-1)){
             //connect to virtual bottom cell
             union(cell,side*side+1);
         }
         
         //if not left border
-        if(j!=1 && isOpen(i,j-1)){
+        if(j!=0 && isOpen(i,j-1)){
             union(getCellIndex(i,j-1),cell);
         }
         
         //if not right border
-        if(j!=side && isOpen(i,j+1)){
+        if(j!=side-1 && isOpen(i,j+1)){
             union(getCellIndex(i,j+1),cell);
         }
     }
     
     
     private void checkRange(int i,int j){
-        if(i<=0 || j<=0 || j>side || i>side)
+        if(i<0 || j<0 || j>=side || i>=side){
             throw new IndexOutOfBoundsException();
+        }
     }
     
     
@@ -91,8 +92,20 @@ public class Percolation
         return cellStorage.connected(side*side,side*side+1);
     }
     
+ 
+ public int numberOfOpenSites(){
+  int count=0;
+  for(int i=0;i<side*side;i++)
+   if (states[i]==1)
+    count++;
+   
+  return count;
+ }
+ 
+ 
+ 
     private int getCellIndex(int row,int column){
-        return (side*(row-1))+column-1;
+        return side*row+column;
     }
 }
 
