@@ -11,7 +11,7 @@ public class PercolationStats{
         if(N<=0 || T<=0) throw new IllegalArgumentException();
         attempts=new double[T];
         for(int i=0;i<T;i++){
-            Percolation perc=new Percolation(N);
+            Percolation1 perc=new Percolation1(N);
             int steps=0;
             while(!perc.percolates())
                 {
@@ -47,7 +47,7 @@ public class PercolationStats{
         }          
         // test client, described below
         public static void main(String[] args){
-            PercolationStats ps=new PercolationStats(300,1000); 
+            PercolationStats ps=new PercolationStats(1000,1000); 
             StdOut.print("mean = "+ps.mean()+"\n");
             StdOut.print("std dev = "+ps.stddev()+"\n");
             StdOut.print("95% confidence interval = "+ps.confidenceLo()+", "+ps.confidenceHi());
