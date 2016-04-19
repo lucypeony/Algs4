@@ -49,7 +49,7 @@ public class PercolationVisualizer {
         Percolation perc = new Percolation(N);
 
         // turn on animation mode
-        StdDraw.show(0); 
+        StdDraw.show(0);
 
         // repeatedly read in sites to open and draw resulting system
         draw(perc, N);
