@@ -2,31 +2,10 @@ import java.io.*;
 import java.util.*;
 
 public class LastWord{
-    
-    public static char[] Solve(String s){
-        char[] chars=new char[2002];
-       int len=s.length();
-       int left=1001;
-       int right=1002;
-       chars[left]=s.charAt(0);
-       char pivot=chars[left];
-       for(int i=1;i<len;i++){
-           char temp;
-            temp=s.charAt(i);
-           if( temp>pivot) {
-               chars[left--]=temp;
-               pivot=temp;
-       }
-           else{
-               chars[right++]=temp;
-           }
-       }//end of for
-       
-       return chars;
-    }
+   
 
   public static void main(String[] args) throws Exception{
-    String name="A-small-practice_LastWord";
+    String name="A-large-practice_LastWord";
     String path="";//file path
 
     Locale.setDefault(Locale.US);
@@ -50,27 +29,23 @@ public class LastWord{
      
       String s=sc.next(); 
       
-       char[] chars=new char[2002];
-       int len=s.length();
-       int left=1001;
-       int right=1002;
-       chars[left]=s.charAt(0);
-       char pivot=chars[left];
-       for(int i=1;i<len;i++){
-           char temp;
-            temp=s.charAt(i);
-           if( temp>pivot) {
-               chars[left--]=temp;
-               pivot=temp;
-       }
-           else{
-               chars[right++]=temp;
-           }
-       }//end of for
+      int len=s.length(),MAX=2002;
+      char[] chars=new char[MAX*2+1];
+      int left=MAX;
+      int right=MAX+1;
+      chars[left]=s.charAt(0);
+      for(int i=1;i<len;i++){
+          if(s.charAt(i)>=chars[left]){
+              left--;
+              chars[left]=s.charAt(i);
+          }else{
+              chars[right]=s.charAt(i);
+              right++;
+          }
+      }
            
-      for(int j=0;j<2002;j++)
-          if(chars[j]==' ')
-              pw.printf("%c",chars[j]);
+      for(int i=left;i<right;i++)
+          pw.printf("%c",chars[i]);
       
       pw.printf("\n");
       pw.flush();
