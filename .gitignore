@@ -50,3 +50,7 @@ Temporary Items
 #JAVA
 *.class
 *.txt
+
+
+#csv files 
+*.csv
