@@ -19,27 +19,39 @@ public class WebLinks{
  
  
  public static boolean ifsub(String s,String target){
-	 String t1=s.toLowerCase();
-	 String t2=target.toLowerCase();
-	 if(t1.indexOf(t2)!=-1)
-		 return true;
-	 else 
-		 return false;
+  String t1=s.toLowerCase();
+  String t2=target.toLowerCase();
+  if(t1.indexOf(t2)!=-1)
+   return true;
+  else 
+   return false;
+ }
+ 
+ 
+ public static void getContent(String url){
+     URLResource urllink=new URLResource(url);
+        for(String lines:urllink.lines()){
+            StdOut.println(lines);
+        }
+            
  }
  
     public static void main(String[] args){
-      String url="http://www.dukelearntoprogram.com/course2/data/manylinks.html";
+        /*
+      String url="http://www.ielts-blog.com/ielts-writing-samples-essays-letters-reports/";
       URLResource urllink=new URLResource(url);
         for(String lines:urllink.lines()){
-          //StdOut.println(lines);   
-		  String temp=getLink(lines);
-		  if (temp!=""){
-			  if(ifsub(temp,"Youtube")){
-			      StdOut.println(temp);
-			  }
-			
-		  }//if 
+            //StdOut.println(lines);   
+            String temp=getLink(lines);
+            if (temp!=""){
+                if(temp.indexOf("category")!=-1)
+                    StdOut.println(temp);
+    }//if 
     
         }//for 
+        */
+        
+        getContent("http://www.ielts-blog.com/ielts-writing-samples/ielts-essays-band-8/ielts-essay-topic-computers-instead-of-teachers/");
+        
     }//main
 }
