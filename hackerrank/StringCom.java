@@ -16,14 +16,17 @@ public class StringCom{
         String mins,maxs;
         mins=s.substring(0,k);
         maxs=s.substring(0,k);
-        for(int i=1;i<len-k;i++){
+        // System.out.println("mins maxs: "+mins+" "+maxs);
+        for(int i=1;i<len-k+1;i++){
             String temp=s.substring(i,i+k);
             int res=temp.compareTo(mins);
             if(res<0)
                 mins=temp;
-            else if (res>0)
+            res=temp.compareTo(maxs);
+            if(res>0)
                 maxs=temp;
-            
+             //System.out.println("temp: "+temp);
+            //System.out.println("mins maxs: "+mins+" "+maxs);
         }//for
         System.out.println(mins);
         System.out.println(maxs);
