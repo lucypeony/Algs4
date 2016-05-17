@@ -3,17 +3,27 @@ import java.util.*;
 import java.text.*;
 import java.math.*;
 import java.util.regex.*;
-
 public class Solution {
+   
    public static void main(String[] args) {
-      Scanner scan = new Scanner(System.in); // use the Scanner class to read from stdin
-      String inputString = scan.nextLine(); // read a line of input and save it to a variable
-      scan.close(); // close the scanner
-      
-      // Your first line of output goes here
-      System.out.println("Hello, World.");
-      
-      // Write the second line of output
-      System.out.println(inputString);
+      Scanner scan = new Scanner(System.in);
+      int x = scan.nextInt(); 
+      scan.close();
+      String ans="";
+          
+      // if 'n' is NOT evenly divisible by 2 (i.e.: n is odd)
+      if(x%2==1){
+         ans = "Weird";
+      }
+      else{
+         // Complete the code 
+          if(x>=2 || x<=5)
+              ans="Not Weird";
+          if(x>=6 || x<=20)
+              ans="Weird";
+          if(x>20)
+              ans="Not Weird";
+      }
+      System.out.println(ans);
    }
 }

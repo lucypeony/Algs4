@@ -12,15 +12,46 @@
       
           Scanner scan = new Scanner(System.in);
           String s=scan.nextLine();
-          //Complete the code
-          Pattern pattern = Pattern.compile("[a-zA-Z]");
           
-          String[] sa=new String[100];
-          sa=s.split(pattern);
+          boolean left=true;
+          boolean right=false;
           
-          System.out.println(sa);
-                                        
-                                        
+          int len=s.length();
+          int temp=0;
+          while(s.charAt(temp)==' ')
+              temp++;
+          
+          int MAX=100;
+          String[] sc=new String[MAX];
+          
+          char[] c=new char[MAX];
+          int clen=0;
+          int count=0;
+          for(int i=temp;i<len;i++){
+              if(s.charAt(i)==' ' || s.charAt(i)=='!' || s.charAt(i)==',' || s.charAt(i)=='?' || s.charAt(i)=='.' ||
+                 s.charAt(i)=='\\' || s.charAt(i)=='_' ||s.charAt(i)=='\'' || s.charAt(i)=='@')
+                  left=true;
+              else
+                  left=false;
+              if(left){
+                  if (clen>0){
+                  String stemp=new String(c);
+                  sc[count]=stemp.substring(0,clen+1);
+                  count ++;
+                  clen=0;
+                  }
+              }else{
+                  clen++;
+                  c[clen]=s.charAt(i);
+              }//else 
+              
+          }//for 
+           
+          //He is a very very good boy, isn't he?
+          
+          System.out.println(count);
+          for(int i=0;i<count;i++)
+              System.out.println(sc[i]);
 
-        }
-    }
+        }//main
+    }//class 
